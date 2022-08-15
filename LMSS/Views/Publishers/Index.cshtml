@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LMSS.Models.Publisher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    table{
+    width:100%;
+
+}
+tr{
+    height:40px;
+}
+
+th{
+    font-family: 'Poppins', sans-serif;
+}
+
+td{
+    font-family: 'Poppins', sans-serif;
+}
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<h1>Publisher List</h1>
+<br/>
+    <a asp-action="Create">Create New</a>
+    <br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublisherName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PublisherId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PublisherId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PublisherId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
